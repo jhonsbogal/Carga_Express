@@ -10,6 +10,9 @@ require_once('/xampp/htdocs/cargaexpress/Backend/Modelos/Modelo_Usuarios/usuario
 // Obtener el control
 $control = $_GET['control'] ?? '';
 
+$conexion = new Conexion();
+$usuario = new Usuario($conexion);
+
 switch ($control) {
     case 'generarYGuardarUsuario':
         // Obtener los datos del formulario
@@ -23,10 +26,6 @@ switch ($control) {
             echo "Todos los campos son obligatorios.";
             break;
         }
-
-        // Crear instancia de la conexión y del modelo de usuario
-        $conexion = new Conexion();
-        $usuario = new Usuario($conexion);
 
         // Generar y guardar el usuario
         $mensaje = $usuario->generarYGuardarUsuario($tipoIdentificacion, $numeroIdentificacion, $correo, $contrasena);

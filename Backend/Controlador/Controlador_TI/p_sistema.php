@@ -9,6 +9,9 @@ require_once('/xampp/htdocs/cargaexpress/Backend/Modelos/Modelo_TI/p_sistema.php
 
 $control = $_GET['control'] ?? '';
 
+$conexion = new Conexion();
+$permisos = new Permisos($conexion);
+
 switch ($control) {
     case 'guardarPermisos':
         // Obtener los datos del formulario
@@ -22,9 +25,6 @@ switch ($control) {
         $envios = isset($_POST['envios']) ? 1 : 0;
         $observacion = $_POST['observacion'] ?? '';
 
-        // Crear instancia de la conexión y del modelo de permisos
-        $conexion = new Conexion();
-        $permisos = new Permisos($conexion);
 
         // Guardar los permisos
         $mensaje = $permisos->guardarPermisos($idUsuario, $soporteTecnico, $recursosHumanos, $contabilidad, $usuarios, $clientes, $productos, $envios, $observacion);
