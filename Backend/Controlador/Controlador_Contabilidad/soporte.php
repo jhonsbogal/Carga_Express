@@ -15,10 +15,10 @@ $nuevoRegistro = new RegistroContabilidad($conexion->conexion);
 switch ($control) {
     case 'registrar':
         // Obtener datos del formulario
-        $idCliente = $_POST['idCliente'] ?? '';
-        $valorFacturado = $_POST['valorFacturado'] ?? '';
-        $metodoPago = $_POST['metodoPago'] ?? '';
-        $fechaPago = $_POST['fechaPago'] ?? '';
+        $idCliente = $_GET['idCliente'] ?? '';
+        $valorFacturado = $_GET['valorFacturado'] ?? '';
+        $metodoPago = $_GET['metodoPago'] ?? '';
+        $fechaPago = $_GET['fechaPago'] ?? '';
         $archivo = $_FILES['archivo']['name'] ?? '';
 
         // Si se ha subido un archivo, moverlo a la ubicación deseada
